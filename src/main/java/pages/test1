@@ -1,0 +1,3 @@
+<button aria-label="" class="react-calendar__navigation__label" type="button" style="flex-grow: 1;">
+    <span class="react-calendar__navigation__label__labelText react-calendar__navigation__label__labelText--from">November 2025</span>
+</button>

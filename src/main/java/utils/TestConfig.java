@@ -6,6 +6,7 @@ import com.microsoft.playwright.Playwright;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Properties;
 
 public class TestConfig {
@@ -44,12 +45,22 @@ public class TestConfig {
 
 //    Viet ham setup width height browser test
     public static Browser.NewContextOptions getNewContextOptions() {
-        return new Browser.NewContextOptions().setViewportSize(1920, 1080);
+//        setViewportSize(null): tat setting view size co dinh, cho phep browser auto dung kich thuoc
+//        man hinh that
+//        setIgnoreHTTPSErrors(true): bo qua loi lien quan toi SSL/https
+//        CHI DUOC DUNG TRONG MOI TRUONG TEST, KHONG DUOC DUNG TRONG PRODUCTION
+        return new Browser.NewContextOptions()
+                .setViewportSize(null)
+                .setIgnoreHTTPSErrors(true);
     }
 
     public static BrowserType.LaunchOptions getBrowserLauchOptions() {
         return new BrowserType.LaunchOptions()
-                .setHeadless(false);
+                .setChannel("chrome")
+                .setHeadless(false)
+                .setArgs(Arrays.asList(
+                        "--start-maximized"
+                ));
     }
 
     public static String getBaseUrl() {

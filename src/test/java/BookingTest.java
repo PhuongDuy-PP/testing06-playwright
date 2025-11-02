@@ -72,13 +72,54 @@ public class BookingTest {
 
         bookingPage.selectDoctor("Dr. User Fullname 6 - Neurology");
         page.waitForTimeout(2000);
-//        B5: Pick date October 30, 2025
+//        B5: Pick date November 2, 2025
+        bookingPage.pickDateAppointment("November 2, 2025");
 
 //        B6: Pick time slot: 06:00 - 17:00
+        bookingPage.pickTimeSlot("06:00 - 17:00");
 
 //        B7: Choose package
+        bookingPage.choosePackage();
 
 //        B8: submit appoinment
+        bookingPage.submitBooking();
+
+        page.waitForTimeout(4000);
+        String currentUrl = page.url();
+        Assert.assertTrue(currentUrl.endsWith("appointments"));
+    }
+
+//    test case scroll
+    @Test
+    public void testScrollUpAndDown() {
+        loginPage.navigateToLoginPage();
+        String validPatientUser = TestConfig.getValidPatient();
+        String validPatientPass = TestConfig.getValidPatientPass();
+        loginPage.login(validPatientUser, validPatientPass);
+        page.waitForTimeout(2000);
+
+        bookingPage.openBookingFromMenu();
+        page.waitForTimeout(2000);
+
+//        scroll down
+//        page.evaluate("window.scrollTo(0, document.body.scrollHeight)");
+//        scroll smooth
+        page.evaluate("window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})");
+        page.waitForTimeout(3000);
+
+//        scroll up
+        page.evaluate("window.scrollTo(0,0)");
+        page.waitForTimeout(3000);
+
+//        scroll xuong giua trang
+        page.evaluate("window.scrollTo(0, document.body.scrollHeight/2)");
+        page.waitForTimeout(3000);
+
+        page.evaluate("window.scrollTo(0,0)");
+        page.waitForTimeout(3000);
+
+//        scroll toi button Dat lich kham
+        bookingPage.scrollToBookingButton();
 
         Assert.assertTrue(true);
     }
