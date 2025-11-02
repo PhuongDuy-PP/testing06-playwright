@@ -1,0 +1,19 @@
+base.url=
+
+browser=
+viewport.width=
+viewport.height=
+
+timeout=
+
+# valid user
+test.username=
+test.password=
+
+# invalid user
+test.invalid.username=
+test.invalid.password=
+
+# valid patient user
+patient.username=
+patient.password=

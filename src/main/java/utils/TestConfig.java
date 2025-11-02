@@ -63,4 +63,20 @@ public class TestConfig {
     public static String getValidPassword() {
         return getProperty("test.password");
     }
+
+    public static  String getInvalidUsername() {
+        return getProperty("test.invalid.username");
+    }
+
+    public static String getInvalidPassword() {
+        return getProperty("test.invalid.password");
+    }
+
+    public static String getValidPatient() {
+        return getProperty("patient.username");
+    }
+
+    public static String getValidPatientPass() {
+        return getProperty("patient.password");
+    }
 }

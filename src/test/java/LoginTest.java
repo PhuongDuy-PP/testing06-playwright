@@ -64,6 +64,24 @@ public class LoginTest {
 //        => Login Page
         loginPage.login(username, password);
 
-        Assert.assertTrue(true);
+//        chờ vài giây de xu ly trang login
+        page.waitForTimeout(3000);
+        boolean isLoginSuccess = loginPage.isLoginSuccessfull();
+        Assert.assertTrue(isLoginSuccess);
+    }
+
+//    test case voi invalid user
+    @Test
+    public void testLoginWithInvalidUser() {
+        loginPage.navigateToLoginPage();
+
+        String invalidUserName = TestConfig.getInvalidUsername();
+        String invalidPassword = TestConfig.getInvalidPassword();
+
+        loginPage.login(invalidUserName, invalidPassword);
+        boolean hasError = loginPage.hasErrorMessage();
+        page.waitForTimeout(3000);
+        Assert.assertTrue(hasError);
+
     }
 }

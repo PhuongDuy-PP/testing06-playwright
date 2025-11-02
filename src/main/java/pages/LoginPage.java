@@ -46,7 +46,33 @@ public class LoginPage extends BasePage {
         enterUsername(username);
         enterPassword(password);
         clickLoginButton();
-        page.waitForLoadState();
+//        page.waitForLoadState();
+    }
+
+//    viet ham kiem tra login thanh cong hay khong
+    public boolean isLoginSuccessfull(){
+//        B1: lay url hien tai cua web
+        String currentUrl = page.url();
+//        !: phủ dinh gia tri boolean
+//        ket qua ham contain la boolean
+        return !currentUrl.contains("/login");
+    }
+
+//    viet ham kiem tra thong bao co loi khong
+//<div class="toast-container top-0 end-0 p-3">
+//    <div class="fade toast bg-danger show" role="alert" aria-live="assertive" aria-atomic="true">
+//        <div class="toast-header">
+//            <strong class="me-auto">Thông báo</strong>
+//            <button type="button" class="btn-close" aria-label="Close" data-dismiss="toast"></button>
+//        </div>
+//        <div class="toast-body">Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.</div>
+//    </div>
+//</div>
+    public boolean hasErrorMessage() {
+        page.waitForTimeout(2000);
+        String errorSelectors = "[role='alert']";
+        int countFindErrorSelector = page.locator(errorSelectors).count();
+        return countFindErrorSelector > 0;
     }
 
 }

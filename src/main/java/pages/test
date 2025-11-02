@@ -1,0 +1,7 @@
+<div class="mb-3">
+    <label class="form-label">Bác sĩ</label>
+    <select class="form-select">
+        <option value="">Chọn bác sĩ</option>
+        <option value="3">Dr. User Fullname 6 - Neurology</option>
+    </select>
+</div>
